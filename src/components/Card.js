@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Card.css';
+import './Card.css';
 
 
 
@@ -7,9 +7,13 @@ class Card extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <div className='Card'>
+      <div key={this.props.key} className='Card'>
         <h3>{this.props.title}</h3>
-        <p>{this.props.content}</p>
+        <p>
+          {this.props.content}
+          <button>delete</button>
+        </p>
+
       </div>
     );
   }

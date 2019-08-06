@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
 import List from './components/List';
+import './App.css';
 
-function makeCardArr(cardIdArr, allCards) {
+function returnCardArr(cardIdArr, allCards) {
     return cardIdArr.map(id => allCards[id]);
 }
 
@@ -10,11 +10,17 @@ function App(props) {
   console.log(props.store)
   const allCards = props.store.allCards;
   const listComponentArr = props.store.lists.map(list => {
-    return <List key={list.id} header={list.header} cards={makeCardArr(list.cardIds, allCards)}></List>
+    console.log(list);
+    return <List key={list.id} header={list.header} cards={returnCardArr(list.cardIds, allCards)}></List>
   });
   return (
-    <div className="App-List" >
-      {listComponentArr}
+    <div className="App" >
+      <header className="App-header">
+        <h1>trelloyes</h1>
+      </header>
+      <main className="App-list">
+        {listComponentArr}
+      </main>
     </div>
   );
 }
