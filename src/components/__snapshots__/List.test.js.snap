@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`List component does not render List component if cards prop null 1`] = `null`;
+
 exports[`List component renders List component UI as expected with cards 1`] = `
 <section
   className="List"
@@ -30,5 +32,23 @@ exports[`List component renders List component UI as expected with cards 1`] = `
       </p>
     </div>
   </div>
+</section>
+`;
+
+exports[`List component renders List component UI as expected with empty cards array 1`] = `
+<section
+  className="List"
+  id="1"
+>
+  <header
+    className="List-header"
+  >
+    <h2>
+      a header
+    </h2>
+  </header>
+  <div
+    className="List-cards"
+  />
 </section>
 `;

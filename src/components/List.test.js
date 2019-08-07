@@ -14,13 +14,17 @@ describe('List component', () => {
   });
 
   it('does not render List component if cards prop null', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(null, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const tree = renderer.create(<List key='1' id='1' header='a header' cards={null} />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders List component UI as expected with cards', () => {
     const tree = renderer.create(<List key='1' id='1' header='a header' cards={[STORE.allCards['a']]} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders List component UI as expected with empty cards array', () => {
+    const tree = renderer.create(<List key='1' id='1' header='a header' cards={[]} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
