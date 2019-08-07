@@ -3,16 +3,15 @@ import List from './components/List';
 import './App.css';
 
 
-  function returnCardArr(cardIdArr, allCards) {
-    return cardIdArr.map(id => allCards[id]);
-  }
+
 
 function App(props) {
   console.log(props.store)
   const allCards = props.store.allCards;
   const listComponentArr = props.store.lists.map(list => {
     console.log(list);
-    return <List key={list.id} id={list.id} header={list.header} cards={returnCardArr(list.cardIds, allCards)} />
+    const cardArr = list.cardIds.map(id => allCards[id]);
+    return <List key={list.id} id={list.id} header={list.header} cards={cardArr} />
   });
   return (
     <div className="App" >
@@ -26,4 +25,5 @@ function App(props) {
   );
 }
 
+// export cardArr;
 export default App;
