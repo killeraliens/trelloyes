@@ -5,8 +5,8 @@ import Card from './Card';
 
 class List extends React.Component {
   render() {
-    console.log('Using a List class component!');
-    console.log(this.props);
+    // console.log('Using a List class component!');
+    // console.log(this.props);
     if(this.props.cards) {
       const cardsArr = this.props.cards.map(card => <Card key={card.id} id={card.id} title={card.title} content={card.content} />)
       return (
