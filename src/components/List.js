@@ -8,7 +8,14 @@ class List extends React.Component {
     // console.log('Using a List class component!');
     // console.log(this.props);
     if(this.props.cards) {
-      const cardsArr = this.props.cards.map(card => <Card key={card.id} id={card.id} title={card.title} content={card.content} />)
+      const cardsArr = this.props.cards.map(card => <Card
+        key={card.id}
+        id={card.id}
+        listId={this.props.id}
+        title={card.title}
+        content={card.content}
+        onDeleteCard={this.props.onDeleteCard}
+      />)
       return (
         <section id={this.props.id} className='List'>
           <header className='List-header'><h2>{this.props.header}</h2></header>

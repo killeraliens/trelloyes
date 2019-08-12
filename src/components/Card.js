@@ -4,6 +4,9 @@ import './Card.css';
 
 
 class Card extends React.Component {
+  handleDeleteClick = (e) => {
+    this.props.onDeleteCard(this.props.id, this.props.listId)
+  }
   render() {
     console.log(this.props)
     return (
@@ -11,7 +14,7 @@ class Card extends React.Component {
         <h3>{this.props.title}</h3>
         <p>
           {this.props.content}
-          <button>delete</button>
+          <button onClick={this.handleDeleteClick}>delete</button>
         </p>
 
       </div>
