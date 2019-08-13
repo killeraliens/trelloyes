@@ -4,9 +4,11 @@ import Card from './Card';
 
 
 class List extends React.Component {
+  handleClickAddCard = (e) => {
+    this.props.onAddCard(this.props.id);
+  }
+
   render() {
-    // console.log('Using a List class component!');
-    // console.log(this.props);
     if(this.props.cards) {
       const cardsArr = this.props.cards.map(card => <Card
         key={card.id}
@@ -20,6 +22,7 @@ class List extends React.Component {
         <section id={this.props.id} className='List'>
           <header className='List-header'><h2>{this.props.header}</h2></header>
           <div className='List-cards'>{cardsArr}</div>
+          <button type='button' onClick={this.handleClickAddCard}>Add random card</button>
         </section>
       );
     } else {
