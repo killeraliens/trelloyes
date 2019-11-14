@@ -13,25 +13,32 @@ const newRandomCard = () => {
     }
 }
 
-function removeCardFromAllCardsObj(cardId, allCardsObj) {
-  const newObj = {};
-  Object.keys(allCardsObj).forEach(key => {
-    if (key !== cardId) {
-      newObj[key] = allCardsObj[key];
-    }
-  })
-  return newObj;
-}
-
 // function removeCardFromAllCardsObj(cardId, allCardsObj) {
-//     console.log(Object.entries(allCardsObj));
-//     const newAllCardsObj = Object.entries(allCardsObj).reduce((newObj, [key, val]) => {
-//       newObj[key] = val ;
-//       return newObj;
-//     });
-//     console.log('new all cards object...', {newAllCardsObj});
-//     return newAllCardsObj;
+//   const newObj = {};
+//   Object.keys(allCardsObj).forEach(key => {
+//     if (key !== cardId) {
+//       newObj[key] = allCardsObj[key];
+//     }
+//   })
+//   return newObj;
 // }
+
+function removeCardFromAllCardsObj(cardId, allCardsObj) {
+    console.log(Object.entries(allCardsObj));
+    // const newAllCardsObj = Object.entries(allCardsObj).reduce((newObj, [key, val]) => {
+    //   console.log();
+    //   newObj[key] = val ;
+    //   return newObj;
+    // }); //creates weird array
+    const newAllCardsObj = {};
+    Object.entries(allCardsObj).forEach(([key, val]) => {
+      if (key !== cardId) {
+        newAllCardsObj[key] = val
+      }
+    })
+    console.log('new all cards object...', {newAllCardsObj});
+    return newAllCardsObj;
+}
 
 // function omit(obj, keyToOmit) {
 //   return Object.entries(obj).reduce(
@@ -63,10 +70,11 @@ class App extends React.Component {
   handleDeleteCard = (cardId, listId) => {
     const newLists = this.state.store.lists.map(list => {
         list.cardIds = list.cardIds.filter(id => id !== cardId)
-      return list
+        return list
     });
+
     const newAllCards = removeCardFromAllCardsObj(cardId, this.state.store.allCards);
-    // omit(this.state.store.allCards, cardId);
+
     this.setState({
       store: {
         allCards: newAllCards,
